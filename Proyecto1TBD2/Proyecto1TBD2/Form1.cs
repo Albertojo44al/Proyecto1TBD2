@@ -32,5 +32,10 @@ namespace Proyecto1TBD2
             DbCommand = new OdbcCommand(sql, DbConnection);
             DbCommand.ExecuteNonQuery();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
