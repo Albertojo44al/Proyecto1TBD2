@@ -12,29 +12,57 @@ using FirebirdSql.Data.FirebirdClient;
 
 namespace Proyecto1TBD2
 {
-    public partial class Form1 : Form
+    public partial class CreateDataBase : Form
     {
         OdbcCommand DbCommand;
-        public Form1()
+        public CreateDataBase()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        { 
+
+
+
             FbConnectionStringBuilder fbc = new FbConnectionStringBuilder();
             fbc.ServerType = FbServerType.Embedded;
-            fbc.UserID = "SYSDBA";
-            fbc.Password = "masterkey";
-            fbc.Dialect = 3;
-            fbc.Database = @"nuevaPrueba.fdb";
-            fbc.Charset = "UTF8";
+            fbc.UserID = user.Text;
+            fbc.Password = pass.Text;
+            fbc.Dialect = Int32.Parse(dialect.SelectedItem.ToString());
+            fbc.Database = @""+Database.Text+".FDB";
+            fbc.Charset = charset.SelectedItem.ToString();
             FbConnection.CreateDatabase(fbc.ToString());
             FbConnection con = new FbConnection(fbc.ToString());
             con.Open();
         }           
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
