@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using FirebirdSql.Data.FirebirdClient;
 
 namespace Proyecto1TBD2
 {
@@ -21,17 +22,17 @@ namespace Proyecto1TBD2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OdbcConnection DbConnection = new OdbcConnection("Dsn=PROYECTO1TDB2;Uid=sysdba; Pwd=masterkey");
-            DbConnection.Open();
-            if (DbConnection.State == System.Data.ConnectionState.Open)
-                MessageBox.Show("Simon");
-            else
-                MessageBox.Show("Nel");
-
-            string sql = "INSERT INTO PRUEBA (CODIGO,NOMBRE) VALUES (2,'JOSE');";
-            DbCommand = new OdbcCommand(sql, DbConnection);
-            DbCommand.ExecuteNonQuery();
-        }
+            FbConnectionStringBuilder fbc = new FbConnectionStringBuilder();
+            fbc.ServerType = FbServerType.Embedded;
+            fbc.UserID = "SYSDBA";
+            fbc.Password = "masterkey";
+            fbc.Dialect = 3;
+            fbc.Database = @"nuevaPrueba.fdb";
+            fbc.Charset = "UTF8";
+            FbConnection.CreateDatabase(fbc.ToString());
+            FbConnection con = new FbConnection(fbc.ToString());
+            con.Open();
+        }           
 
         private void label1_Click(object sender, EventArgs e)
         {
