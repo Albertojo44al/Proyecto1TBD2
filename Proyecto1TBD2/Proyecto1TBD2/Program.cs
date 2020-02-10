@@ -16,7 +16,7 @@ namespace Proyecto1TBD2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateDataBase());
+            Application.Run(new Inicio());
         }
     }
 }

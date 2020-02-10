@@ -10,22 +10,22 @@ using System.Windows.Forms;
 using System.Data.Odbc;
 using FirebirdSql.Data.FirebirdClient;
 
+
 namespace Proyecto1TBD2
 {
     public partial class CreateDataBase : Form
     {
-        OdbcCommand DbCommand;
+        FbConnectionStringBuilder fbc = new FbConnectionStringBuilder();
         public CreateDataBase()
         {
             InitializeComponent();
+            
         }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         { 
-
-
-
-            FbConnectionStringBuilder fbc = new FbConnectionStringBuilder();
             fbc.ServerType = FbServerType.Embedded;
             fbc.UserID = user.Text;
             fbc.Password = pass.Text;
@@ -33,8 +33,7 @@ namespace Proyecto1TBD2
             fbc.Database = @""+Database.Text+".FDB";
             fbc.Charset = charset.SelectedItem.ToString();
             FbConnection.CreateDatabase(fbc.ToString());
-            FbConnection con = new FbConnection(fbc.ToString());
-            con.Open();
+           
         }           
 
         private void label1_Click(object sender, EventArgs e)
@@ -65,6 +64,11 @@ namespace Proyecto1TBD2
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

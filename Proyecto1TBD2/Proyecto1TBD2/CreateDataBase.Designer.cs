@@ -36,14 +36,15 @@
             this.user = new System.Windows.Forms.TextBox();
             this.pass = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dialect = new System.Windows.Forms.ComboBox();
+            this.charset = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.charset = new System.Windows.Forms.ComboBox();
-            this.dialect = new System.Windows.Forms.ComboBox();
+            this.back = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -124,14 +125,6 @@
             this.panel1.Size = new System.Drawing.Size(508, 120);
             this.panel1.TabIndex = 7;
             // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(18, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "DataBase Login";
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(382, 16);
@@ -140,6 +133,14 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Create user";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(18, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "DataBase Login";
             // 
             // panel2
             // 
@@ -154,6 +155,31 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(508, 120);
             this.panel2.TabIndex = 9;
+            // 
+            // dialect
+            // 
+            this.dialect.FormattingEnabled = true;
+            this.dialect.Items.AddRange(new object[] {
+            "3",
+            "1"});
+            this.dialect.Location = new System.Drawing.Point(207, 74);
+            this.dialect.Name = "dialect";
+            this.dialect.Size = new System.Drawing.Size(121, 24);
+            this.dialect.TabIndex = 10;
+            this.dialect.Text = "3";
+            // 
+            // charset
+            // 
+            this.charset.FormattingEnabled = true;
+            this.charset.Items.AddRange(new object[] {
+            "UTF8",
+            "ASCII",
+            "UNICODE_FSS"});
+            this.charset.Location = new System.Drawing.Point(207, 36);
+            this.charset.Name = "charset";
+            this.charset.Size = new System.Drawing.Size(121, 24);
+            this.charset.TabIndex = 9;
+            this.charset.Text = "UTF8";
             // 
             // label5
             // 
@@ -179,42 +205,29 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Sql dialect";
             // 
-            // charset
+            // back
             // 
-            this.charset.FormattingEnabled = true;
-            this.charset.Items.AddRange(new object[] {
-            "UTF8",
-            "ASCII",
-            "UNICODE_FSS"});
-            this.charset.Location = new System.Drawing.Point(207, 36);
-            this.charset.Name = "charset";
-            this.charset.Size = new System.Drawing.Size(121, 24);
-            this.charset.TabIndex = 9;
-            this.charset.Text = "UTF8";
+            this.back.Location = new System.Drawing.Point(293, 399);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(97, 29);
+            this.back.TabIndex = 17;
+            this.back.Text = "< Back";
+            this.back.UseVisualStyleBackColor = true;
+            this.back.Click += new System.EventHandler(this.back_Click);
             // 
-            // dialect
-            // 
-            this.dialect.FormattingEnabled = true;
-            this.dialect.Items.AddRange(new object[] {
-            "3",
-            "1"});
-            this.dialect.Location = new System.Drawing.Point(207, 74);
-            this.dialect.Name = "dialect";
-            this.dialect.Size = new System.Drawing.Size(121, 24);
-            this.dialect.TabIndex = 10;
-            this.dialect.Text = "3";
-            // 
-            // Form1
+            // CreateDataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 468);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Database);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "CreateDataBase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create DataBas";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -243,6 +256,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button back;
     }
 }
 
