@@ -21,12 +21,25 @@ namespace Proyecto1TBD2
         }
 
         FbConnection con;
+        bool update = false;
         String tableName;
+        DataGridViewRow row;
+        DataGridViewColumnCollection column;
         public AddData(FbConnection _con,string _tableName)
         {
             InitializeComponent();
             con = _con;
             tableName = _tableName;
+        }
+
+        public AddData(FbConnection _con, string _tableName, DataGridViewRow _row, DataGridViewColumnCollection _column, bool _update)
+        {
+            InitializeComponent();
+            con = _con;
+            tableName = _tableName;
+            row = _row;
+            column = _column;
+            update = _update;
         }
 
 
@@ -73,6 +86,17 @@ namespace Proyecto1TBD2
                 text[i].Location = new Point(180, y);
                 text[i].Name = i.ToString();
                 text[i].Size = new Size(220, 20);
+                if (update == true)
+                {
+                    try
+                    {
+                        text[i].Text = row.Cells[i].Value.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("You have not selected any row", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                 text[i].Visible = true;
                 this.Controls.Add(this.text[i]);
                 y += 40;
@@ -97,18 +121,30 @@ namespace Proyecto1TBD2
 
         private void done_Click(object sender, EventArgs e)
         {
+            string updt = "",sql,newsql;
+            int columns = numberOfColumns();
 
-            for(int i = 0;i<numberOfColumns(); i++)
+            for (int i = 0;i<columns; i++)
             {
-                commit += text[i].Text+",";
+                if (update)
+                    updt += column[i].Name.ToString() +" = "+ text[i].Text+',';
+                else
+                    commit += text[i].Text+",";
             }
             try
             {
-                string sql = commit.TrimEnd(',');
-                String newsql = "insert into " + tableName + " values(" + sql + ");";
+                if (update){
+                    sql = updt.TrimEnd(',');
+                    newsql = "Update " + tableName + " set " + sql + " where " + column[0].Name.ToString() + " = " + row.Cells[0].Value.ToString() + ";";
+                }
+                else {
+                    sql = commit.TrimEnd(',');
+                    newsql = "insert into " + tableName + " values(" + sql + ");";
+                }
                 FbCommand cmd = new FbCommand(newsql, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Succes", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Dispose();
                 this.Hide();
             }
             catch (Exception)

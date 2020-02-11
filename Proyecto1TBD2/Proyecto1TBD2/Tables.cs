@@ -15,7 +15,9 @@ namespace Proyecto1TBD2
     public partial class Tables : Form
     {
         FbConnection con = new FbConnection();
-        string deleteS;
+        string row,column;
+        DataGridViewRow selectedRow;
+        DataGridViewColumn selectedColumn;
         public Tables()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace Proyecto1TBD2
 
                 tabs.DataSource = al;
                 tabs.SelectedIndexChanged += tabs_SelectedIndexChanged;
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 MessageBox.Show("You are not connected to a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -106,6 +108,7 @@ namespace Proyecto1TBD2
                     string sql = "drop table " + tabs.SelectedItem.ToString() + ";";
                     FbCommand cmd = new FbCommand(sql, con);
                     cmd.ExecuteNonQuery();
+                    cmd.Dispose();
                     
                 }catch(FirebirdSql.Data.FirebirdClient.FbException ex)
                 {
@@ -122,27 +125,37 @@ namespace Proyecto1TBD2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(deleteS);
+            var result = MessageBox.Show("Are you sure to delete the " + row + " field", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string sql = "delete from " + tabs.SelectedItem.ToString() + " where " + column + " = '" + row + "';";
+                    FbCommand cmd = new FbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("delete field", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Field not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
-        int numberOfColumns()
+        private void update_Click(object sender, EventArgs e)
         {
-            string sql = "select count(rdb$field_name) from rdb$relation_fields where rdb$relation_name ='" + tabs.SelectedItem.ToString() + "';";
-            FbCommand cmd = new FbCommand(sql, con);
-            FbDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            int columns = reader.GetInt32(0);
-            cmd.Dispose();
-            return columns;
+            AddData a = new AddData(con, tabs.SelectedItem.ToString(), selectedRow, dataTable.Columns,true);
+            a.Show();
         }
 
-       
         private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-            DataGridViewRow selectedRow = dataTable.Rows[index];
-            deleteS = selectedRow.Cells[0].Value.ToString();
-
+            int indexr = e.RowIndex;
+            selectedRow = dataTable.Rows[indexr];
+            selectedColumn = dataTable.Columns[0];
+            row = selectedRow.Cells[0].Value.ToString();
+            column = selectedColumn.Name.ToString();
+            
         }
     }
 }

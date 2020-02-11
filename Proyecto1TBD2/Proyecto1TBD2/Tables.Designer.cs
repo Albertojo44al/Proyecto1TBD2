@@ -39,6 +39,7 @@
             this.show = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.update = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
@@ -127,7 +128,7 @@
             this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Add.Image = ((System.Drawing.Image)(resources.GetObject("Add.Image")));
             this.Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Add.Location = new System.Drawing.Point(518, 55);
+            this.Add.Location = new System.Drawing.Point(518, 54);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(115, 24);
             this.Add.TabIndex = 5;
@@ -143,7 +144,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(666, 55);
+            this.button1.Location = new System.Drawing.Point(675, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 24);
             this.button1.TabIndex = 6;
@@ -152,11 +153,28 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // update
+            // 
+            this.update.BackColor = System.Drawing.Color.Azure;
+            this.update.FlatAppearance.BorderSize = 0;
+            this.update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.update.Image = ((System.Drawing.Image)(resources.GetObject("update.Image")));
+            this.update.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.update.Location = new System.Drawing.Point(837, 54);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(115, 24);
+            this.update.TabIndex = 7;
+            this.update.Text = "Update";
+            this.update.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
+            this.Controls.Add(this.update);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.show);
@@ -183,11 +201,12 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem delete;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.DataGridView dataTable;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox tabs;
         private System.Windows.Forms.Button show;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button update;
+        public System.Windows.Forms.DataGridView dataTable;
     }
 }

@@ -68,21 +68,25 @@ namespace Proyecto1TBD2
 
         private void drop_Click(object sender, EventArgs e)
         {
-            try
+            var result = MessageBox.Show("Are you sure to drop the " + path.Database + " Database", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
-                con.Close();
-                FbConnection.ClearAllPools();
-                FbConnection.DropDatabase(path.ToString());
-                Tools t = new Tools();
-                t.Close();
-                MessageBox.Show("Database "+path.Database + " has been removed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    con.Close();
+                    con.Close();
+                    FbConnection.ClearAllPools();
+                    FbConnection.DropDatabase(path.ToString());
+                    Tools t = new Tools();
+                    t.Close();
+                    MessageBox.Show("Database " + path.Database + " has been removed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database file was not found on the host. Please connect to a Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Database file was not found on the host. Please connect to a Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
     }
 }
