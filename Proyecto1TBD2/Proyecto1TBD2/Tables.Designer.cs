@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabs = new System.Windows.Forms.ComboBox();
             this.show = new System.Windows.Forms.Button();
+            this.Add = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(125, 24);
             this.delete.Text = "Delete table";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -80,7 +82,7 @@
             // dataTable
             // 
             this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTable.Location = new System.Drawing.Point(12, 76);
+            this.dataTable.Location = new System.Drawing.Point(24, 112);
             this.dataTable.Name = "dataTable";
             this.dataTable.RowHeadersWidth = 51;
             this.dataTable.RowTemplate.Height = 24;
@@ -91,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 42);
+            this.label1.Location = new System.Drawing.Point(21, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 2;
@@ -100,7 +102,7 @@
             // tabs
             // 
             this.tabs.FormattingEnabled = true;
-            this.tabs.Location = new System.Drawing.Point(99, 42);
+            this.tabs.Location = new System.Drawing.Point(100, 55);
             this.tabs.Name = "tabs";
             this.tabs.Size = new System.Drawing.Size(121, 24);
             this.tabs.TabIndex = 3;
@@ -108,7 +110,7 @@
             // 
             // show
             // 
-            this.show.Location = new System.Drawing.Point(256, 42);
+            this.show.Location = new System.Drawing.Point(257, 55);
             this.show.Name = "show";
             this.show.Size = new System.Drawing.Size(75, 23);
             this.show.TabIndex = 4;
@@ -116,11 +118,28 @@
             this.show.UseVisualStyleBackColor = true;
             this.show.Click += new System.EventHandler(this.show_Click);
             // 
+            // Add
+            // 
+            this.Add.BackColor = System.Drawing.Color.Azure;
+            this.Add.FlatAppearance.BorderSize = 0;
+            this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Add.Image = ((System.Drawing.Image)(resources.GetObject("Add.Image")));
+            this.Add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Add.Location = new System.Drawing.Point(518, 55);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(115, 24);
+            this.Add.TabIndex = 5;
+            this.Add.Text = "Add data";
+            this.Add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Add.UseVisualStyleBackColor = false;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
+            this.Controls.Add(this.Add);
             this.Controls.Add(this.show);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.label1);
@@ -149,5 +168,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox tabs;
         private System.Windows.Forms.Button show;
+        private System.Windows.Forms.Button Add;
     }
 }

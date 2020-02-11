@@ -41,18 +41,24 @@ namespace Proyecto1TBD2
 
         public void Tabs()
         {
-            string sql = "select distinct RDB$RELATION_NAME FROM RDB$RELATIONS WHERE RDB$VIEW_BLR IS NULL AND RDB$SYSTEM_FLAG =0;";
-            FbCommand cmd = new FbCommand(sql, con);
-            FbDataReader reader = cmd.ExecuteReader();
-
-            ArrayList al = new ArrayList();
-            while (reader.Read())
+            try
             {
-                al.Add(reader.GetString(0).Trim());
-            }
+                string sql = "select distinct RDB$RELATION_NAME FROM RDB$RELATIONS WHERE RDB$VIEW_BLR IS NULL AND RDB$SYSTEM_FLAG =0;";
+                FbCommand cmd = new FbCommand(sql, con);
+                FbDataReader reader = cmd.ExecuteReader();
 
-            tabs.DataSource = al;
-            tabs.SelectedIndexChanged += tabs_SelectedIndexChanged;
+                ArrayList al = new ArrayList();
+                while (reader.Read())
+                {
+                    al.Add(reader.GetString(0).Trim());
+                }
+
+                tabs.DataSource = al;
+                tabs.SelectedIndexChanged += tabs_SelectedIndexChanged;
+            }catch(Exception ex)
+            {
+                MessageBox.Show("You are not connected to a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void Data(DataGridView dgv)
@@ -65,10 +71,12 @@ namespace Proyecto1TBD2
                 System.Data.DataTable dt = new System.Data.DataTable();
                 dta.Fill(dt);
                 dgv.DataSource = dt;
+                cmd.Dispose();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString(),"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -84,6 +92,31 @@ namespace Proyecto1TBD2
         private void show_Click(object sender, EventArgs e)
         {
             Data(dataTable);
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            var result =MessageBox.Show("Are you sure to delete the "+ tabs.SelectedItem.ToString() +" table", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(result == DialogResult.OK)
+            {
+                try
+                {
+                    
+                    string sql = "drop table " + tabs.SelectedItem.ToString() + ";";
+                    FbCommand cmd = new FbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    
+                }catch(FirebirdSql.Data.FirebirdClient.FbException ex)
+                {
+                    MessageBox.Show("Table is in use", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            AddData a = new AddData(con);
+            a.Show();
         }
     }
 }

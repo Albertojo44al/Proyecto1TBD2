@@ -32,7 +32,16 @@ namespace Proyecto1TBD2
             fbc.Dialect = Int32.Parse(dialect.SelectedItem.ToString());
             fbc.Database = @""+Database.Text+".FDB";
             fbc.Charset = charset.SelectedItem.ToString();
-            FbConnection.CreateDatabase(fbc.ToString());
+            try
+            {
+                FbConnection.CreateDatabase(fbc.ToString());
+                MessageBox.Show("Succes!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please check the name of the database or username","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
            
         }           
 

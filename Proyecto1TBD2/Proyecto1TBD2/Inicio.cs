@@ -14,13 +14,13 @@ namespace Proyecto1TBD2
     public partial class Inicio : Form
     {
         FbConnection con;
-        String path;
+        FbConnectionStringBuilder path;
         public Inicio()
         {
             InitializeComponent();
             this.Location = new Point(262, 113);
         }
-        public Inicio(string _path, FbConnection _con)
+        public Inicio(FbConnectionStringBuilder _path, FbConnection _con)
         {
             InitializeComponent();
             this.Location = new Point(262, 113);
@@ -48,6 +48,7 @@ namespace Proyecto1TBD2
 
         private void connect_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ConnectDataBase con = new ConnectDataBase();
             con.Show();
 
@@ -61,17 +62,27 @@ namespace Proyecto1TBD2
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Tools t = new Tools();
+            Tools t = new Tools(con);
             t.Show();
         }
 
         private void drop_Click(object sender, EventArgs e)
         {
-            con.Close();
-            FbConnection.ClearAllPools();
-            FbConnection.DropDatabase(path);
-            Tools t = new Tools();
-            t.Hide();
+            try
+            {
+                con.Close();
+                FbConnection.ClearAllPools();
+                FbConnection.DropDatabase(path.ToString());
+                Tools t = new Tools();
+                t.Close();
+                MessageBox.Show("Database "+path.Database + " has been removed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database file was not found on the host. Please connect to a Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

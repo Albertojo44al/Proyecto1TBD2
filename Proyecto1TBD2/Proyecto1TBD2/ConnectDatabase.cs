@@ -23,6 +23,8 @@ namespace Proyecto1TBD2
 
         private void back_Click(object sender, EventArgs e)
         {
+            Inicio i = new Inicio();
+            i.Show();
             this.Hide();
         }
 
@@ -48,9 +50,9 @@ namespace Proyecto1TBD2
         private void finish_Click(object sender, EventArgs e)
         {
 
+           
             Tools t = new Tools(con);
-            Inicio i = new Inicio(fbc.ToString(), con);
-            i.Hide();
+            Inicio i = new Inicio(fbc, con);
             i.Show();
             t.Show();
             this.Hide();

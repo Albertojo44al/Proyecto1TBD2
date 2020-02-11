@@ -30,17 +30,19 @@
         {
             this.commit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tablename = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.newField = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.cancel = new System.Windows.Forms.Button();
-            this.fieldName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.fieldName = new System.Windows.Forms.TextBox();
+            this.primarykey = new System.Windows.Forms.CheckBox();
+            this.notnull = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.type = new System.Windows.Forms.ComboBox();
+            this.cancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.length = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,12 +65,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Table name ";
             // 
-            // textBox1
+            // tablename
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 22);
-            this.textBox1.TabIndex = 2;
+            this.tablename.Location = new System.Drawing.Point(147, 42);
+            this.tablename.Name = "tablename";
+            this.tablename.Size = new System.Drawing.Size(186, 22);
+            this.tablename.TabIndex = 2;
             // 
             // label2
             // 
@@ -79,48 +81,70 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Field";
             // 
-            // button2
+            // newField
             // 
-            this.button2.Location = new System.Drawing.Point(421, 171);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "New Field";
-            this.button2.UseVisualStyleBackColor = true;
+            this.newField.Location = new System.Drawing.Point(421, 171);
+            this.newField.Name = "newField";
+            this.newField.Size = new System.Drawing.Size(89, 23);
+            this.newField.TabIndex = 4;
+            this.newField.Text = "New Field";
+            this.newField.UseVisualStyleBackColor = true;
+            this.newField.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.length);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.fieldName);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.primarykey);
+            this.panel1.Controls.Add(this.notnull);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.type);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.newField);
             this.panel1.Location = new System.Drawing.Point(12, 110);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(535, 212);
             this.panel1.TabIndex = 5;
             // 
-            // comboBox1
+            // label3
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "SMALLINT",
-            "INTEGER",
-            "FLOAT",
-            "DATE",
-            "TIME",
-            "CHAR",
-            "VARCHAR"});
-            this.comboBox1.Location = new System.Drawing.Point(134, 121);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.Text = "SMALLINT";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Name ";
+            // 
+            // fieldName
+            // 
+            this.fieldName.Location = new System.Drawing.Point(134, 81);
+            this.fieldName.Name = "fieldName";
+            this.fieldName.Size = new System.Drawing.Size(148, 22);
+            this.fieldName.TabIndex = 7;
+            // 
+            // primarykey
+            // 
+            this.primarykey.AutoSize = true;
+            this.primarykey.Location = new System.Drawing.Point(210, 35);
+            this.primarykey.Name = "primarykey";
+            this.primarykey.Size = new System.Drawing.Size(148, 21);
+            this.primarykey.TabIndex = 10;
+            this.primarykey.Text = "Add to primary key";
+            this.primarykey.UseVisualStyleBackColor = true;
+            // 
+            // notnull
+            // 
+            this.notnull.AutoSize = true;
+            this.notnull.Location = new System.Drawing.Point(26, 35);
+            this.notnull.Name = "notnull";
+            this.notnull.Size = new System.Drawing.Size(78, 21);
+            this.notnull.TabIndex = 9;
+            this.notnull.Text = "Not null";
+            this.notnull.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -131,25 +155,22 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Field";
             // 
-            // checkBox1
+            // type
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(26, 35);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(74, 21);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "No null";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(210, 35);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(148, 21);
-            this.checkBox2.TabIndex = 10;
-            this.checkBox2.Text = "Add to primary key";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.type.FormattingEnabled = true;
+            this.type.Items.AddRange(new object[] {
+            "SMALLINT",
+            "INTEGER",
+            "FLOAT",
+            "DATE",
+            "TIME",
+            "CHAR",
+            "VARCHAR"});
+            this.type.Location = new System.Drawing.Point(134, 121);
+            this.type.Name = "type";
+            this.type.Size = new System.Drawing.Size(121, 24);
+            this.type.TabIndex = 7;
+            this.type.Text = "SMALLINT";
             // 
             // cancel
             // 
@@ -161,21 +182,22 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.button3_Click);
             // 
-            // fieldName
+            // label4
             // 
-            this.fieldName.Location = new System.Drawing.Point(134, 81);
-            this.fieldName.Name = "fieldName";
-            this.fieldName.Size = new System.Drawing.Size(148, 22);
-            this.fieldName.TabIndex = 7;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "length";
             // 
-            // label3
+            // length
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Name ";
+            this.length.Location = new System.Drawing.Point(134, 168);
+            this.length.Name = "length";
+            this.length.Size = new System.Drawing.Size(84, 22);
+            this.length.TabIndex = 12;
+            this.length.TextChanged += new System.EventHandler(this.length_TextChanged);
             // 
             // NewTable
             // 
@@ -184,7 +206,7 @@
             this.ClientSize = new System.Drawing.Size(559, 446);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tablename);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.commit);
             this.Name = "NewTable";
@@ -201,16 +223,18 @@
 
         private System.Windows.Forms.Button commit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tablename;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button newField;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox primarykey;
+        private System.Windows.Forms.CheckBox notnull;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox type;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox fieldName;
+        private System.Windows.Forms.TextBox length;
+        private System.Windows.Forms.Label label4;
     }
 }
