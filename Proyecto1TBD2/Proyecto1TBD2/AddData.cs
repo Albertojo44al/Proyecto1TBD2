@@ -127,9 +127,14 @@ namespace Proyecto1TBD2
             for (int i = 0;i<columns; i++)
             {
                 if (update)
-                    updt += column[i].Name.ToString() +" = "+ text[i].Text+',';
+                    updt += column[i].Name.ToString() + " = " + text[i].Text + ',';
                 else
-                    commit += text[i].Text+",";
+                {
+                    if(!text[i].Text.Equals(""))
+                        commit += text[i].Text + ",";
+                    else
+                        commit += "'',";
+                }
             }
             try
             {
@@ -149,6 +154,8 @@ namespace Proyecto1TBD2
             }
             catch (Exception)
             {
+                updt = "";
+                commit = "";
                 MessageBox.Show("Be sure to fill in the necessary fields correctly","Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }

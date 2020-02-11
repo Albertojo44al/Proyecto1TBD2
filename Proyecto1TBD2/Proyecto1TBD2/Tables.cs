@@ -18,6 +18,7 @@ namespace Proyecto1TBD2
         string row,column;
         DataGridViewRow selectedRow;
         DataGridViewColumn selectedColumn;
+        ArrayList al;
         public Tables()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Proyecto1TBD2
             con = _con;
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)//AddTable
         {
             NewTable t = new NewTable(con);
             t.Show();
@@ -42,7 +43,7 @@ namespace Proyecto1TBD2
 
         }
 
-        public void Tabs()
+        public void Tabs()//list the tables of dataBase
         {
             try
             {
@@ -50,7 +51,7 @@ namespace Proyecto1TBD2
                 FbCommand cmd = new FbCommand(sql, con);
                 FbDataReader reader = cmd.ExecuteReader();
 
-                ArrayList al = new ArrayList();
+                al = new ArrayList();
                 while (reader.Read())
                 {
                     al.Add(reader.GetString(0).Trim());
@@ -64,7 +65,7 @@ namespace Proyecto1TBD2
             }
         }
 
-        public void Data(DataGridView dgv)
+        public void Data(DataGridView dgv)//show data in dataGridView
         {
             try
             {
@@ -83,7 +84,7 @@ namespace Proyecto1TBD2
             }
         }
 
-        private void Tables_Load(object sender, EventArgs e)
+        private void Tables_Load(object sender, EventArgs e)//combobox for tables
         {
             Tabs();
         }
@@ -92,12 +93,12 @@ namespace Proyecto1TBD2
         {
         }
 
-        private void show_Click(object sender, EventArgs e)
+        private void show_Click(object sender, EventArgs e)//show data in datagrid
         {
             Data(dataTable);
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private void delete_Click(object sender, EventArgs e)//delete table
         {
             var result =MessageBox.Show("Are you sure to delete the "+ tabs.SelectedItem.ToString() +" table", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if(result == DialogResult.OK)
@@ -117,13 +118,14 @@ namespace Proyecto1TBD2
             }
         }
 
-        private void Add_Click(object sender, EventArgs e)
+        private void Add_Click(object sender, EventArgs e)//add data
         {
             AddData a = new AddData(con, tabs.SelectedItem.ToString());
             a.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void button1_Click(object sender, EventArgs e)//delete row
         {
             var result = MessageBox.Show("Are you sure to delete the " + row + " field", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
@@ -140,15 +142,25 @@ namespace Proyecto1TBD2
                     MessageBox.Show("Field not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        }  
 
-        private void update_Click(object sender, EventArgs e)
+        private void update_Click(object sender, EventArgs e)//Update Data
         {
             AddData a = new AddData(con, tabs.SelectedItem.ToString(), selectedRow, dataTable.Columns,true);
             a.Show();
         }
 
-        private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void showTables_Click(object sender, EventArgs e)
+        {
+            string allTables = "";   
+            foreach(string table in al)
+            {
+                allTables += table + "\n";
+            }
+            MessageBox.Show(allTables,"Tables of System",MessageBoxButtons.OK);
+        }
+
+        private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e) //extrae dats de la fila y columna seleccionada
         {
             int indexr = e.RowIndex;
             selectedRow = dataTable.Rows[indexr];

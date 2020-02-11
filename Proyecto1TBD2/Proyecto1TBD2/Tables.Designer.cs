@@ -32,7 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTables = new System.Windows.Forms.ToolStripMenuItem();
             this.dataTable = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabs = new System.Windows.Forms.ComboBox();
@@ -51,7 +51,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.delete,
-            this.toolStripMenuItem3});
+            this.showTables});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1050, 28);
@@ -74,12 +74,13 @@
             this.delete.Text = "Delete table";
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
-            // toolStripMenuItem3
+            // showTables
             // 
-            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(123, 24);
-            this.toolStripMenuItem3.Text = "Show tables";
+            this.showTables.Image = ((System.Drawing.Image)(resources.GetObject("showTables.Image")));
+            this.showTables.Name = "showTables";
+            this.showTables.Size = new System.Drawing.Size(123, 24);
+            this.showTables.Text = "Show tables";
+            this.showTables.Click += new System.EventHandler(this.showTables_Click);
             // 
             // dataTable
             // 
@@ -200,7 +201,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem delete;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem showTables;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox tabs;
         private System.Windows.Forms.Button show;
