@@ -115,7 +115,7 @@ namespace Proyecto1TBD2
 
         private void Add_Click(object sender, EventArgs e)
         {
-            AddData a = new AddData(con);
+            AddData a = new AddData(con, tabs.SelectedItem.ToString());
             a.Show();
         }
     }
