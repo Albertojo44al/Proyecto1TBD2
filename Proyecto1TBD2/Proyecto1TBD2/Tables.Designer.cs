@@ -38,6 +38,7 @@
             this.tabs = new System.Windows.Forms.ComboBox();
             this.show = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
@@ -82,12 +83,13 @@
             // dataTable
             // 
             this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTable.Location = new System.Drawing.Point(24, 112);
+            this.dataTable.Location = new System.Drawing.Point(12, 112);
             this.dataTable.Name = "dataTable";
             this.dataTable.RowHeadersWidth = 51;
             this.dataTable.RowTemplate.Height = 24;
             this.dataTable.Size = new System.Drawing.Size(1026, 371);
             this.dataTable.TabIndex = 1;
+            this.dataTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTable_CellClick);
             this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
@@ -134,11 +136,28 @@
             this.Add.UseVisualStyleBackColor = false;
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Azure;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(666, 55);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 24);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Delete field";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.show);
             this.Controls.Add(this.tabs);
@@ -169,5 +188,6 @@
         private System.Windows.Forms.ComboBox tabs;
         private System.Windows.Forms.Button show;
         private System.Windows.Forms.Button Add;
+        private System.Windows.Forms.Button button1;
     }
 }

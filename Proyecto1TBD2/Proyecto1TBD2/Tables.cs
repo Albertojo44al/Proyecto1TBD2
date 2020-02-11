@@ -15,6 +15,7 @@ namespace Proyecto1TBD2
     public partial class Tables : Form
     {
         FbConnection con = new FbConnection();
+        string deleteS;
         public Tables()
         {
             InitializeComponent();
@@ -117,6 +118,31 @@ namespace Proyecto1TBD2
         {
             AddData a = new AddData(con, tabs.SelectedItem.ToString());
             a.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(deleteS);
+        }
+
+        int numberOfColumns()
+        {
+            string sql = "select count(rdb$field_name) from rdb$relation_fields where rdb$relation_name ='" + tabs.SelectedItem.ToString() + "';";
+            FbCommand cmd = new FbCommand(sql, con);
+            FbDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            int columns = reader.GetInt32(0);
+            cmd.Dispose();
+            return columns;
+        }
+
+       
+        private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataTable.Rows[index];
+            deleteS = selectedRow.Cells[0].Value.ToString();
+
         }
     }
 }

@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.newField = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.length = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fieldName = new System.Windows.Forms.TextBox();
             this.primarykey = new System.Windows.Forms.CheckBox();
@@ -41,8 +43,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.type = new System.Windows.Forms.ComboBox();
             this.cancel = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.length = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +110,23 @@
             this.panel1.Size = new System.Drawing.Size(535, 212);
             this.panel1.TabIndex = 5;
             // 
+            // length
+            // 
+            this.length.Location = new System.Drawing.Point(134, 168);
+            this.length.Name = "length";
+            this.length.Size = new System.Drawing.Size(84, 22);
+            this.length.TabIndex = 12;
+            this.length.TextChanged += new System.EventHandler(this.length_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "length";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -163,7 +180,6 @@
             "INTEGER",
             "FLOAT",
             "DATE",
-            "TIME",
             "CHAR",
             "VARCHAR"});
             this.type.Location = new System.Drawing.Point(134, 121);
@@ -181,23 +197,6 @@
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 171);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "length";
-            // 
-            // length
-            // 
-            this.length.Location = new System.Drawing.Point(134, 168);
-            this.length.Name = "length";
-            this.length.Size = new System.Drawing.Size(84, 22);
-            this.length.TabIndex = 12;
-            this.length.TextChanged += new System.EventHandler(this.length_TextChanged);
             // 
             // NewTable
             // 
