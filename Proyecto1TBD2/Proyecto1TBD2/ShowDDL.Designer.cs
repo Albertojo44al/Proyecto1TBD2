@@ -1,6 +1,6 @@
 ﻿namespace Proyecto1TBD2
 {
-    partial class AddData
+    partial class ShowDDL
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.done = new System.Windows.Forms.Button();
+            this.show = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // done
+            // show
             // 
-            this.done.Location = new System.Drawing.Point(395, 481);
-            this.done.Name = "done";
-            this.done.Size = new System.Drawing.Size(81, 31);
-            this.done.TabIndex = 0;
-            this.done.Text = "Commit";
-            this.done.UseVisualStyleBackColor = true;
-            this.done.Click += new System.EventHandler(this.done_Click);
+            this.show.Location = new System.Drawing.Point(12, 12);
+            this.show.Name = "show";
+            this.show.Size = new System.Drawing.Size(212, 70);
+            this.show.TabIndex = 0;
+            this.show.Text = "DDL";
+            this.show.UseVisualStyleBackColor = true;
+            this.show.Click += new System.EventHandler(this.show_Click);
             // 
-            // AddData
+            // ShowDDL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 559);
-            this.Controls.Add(this.done);
-            this.Name = "AddData";
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(236, 94);
+            this.Controls.Add(this.show);
+            this.Name = "ShowDDL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddData";
-            this.Load += new System.EventHandler(this.AddData_Load);
+            this.Text = "ShowDLL";
+            this.Load += new System.EventHandler(this.ShowDLL_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button done;
+        private System.Windows.Forms.Button show;
     }
 }

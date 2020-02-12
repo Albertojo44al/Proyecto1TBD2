@@ -54,20 +54,28 @@ namespace Proyecto1TBD2
             
         public void addColumns()
         {
-            int y = 30,i=0;
-            labels = new Label[numberOfColumns()];
+            int y = 30;
+            int columns = numberOfColumns();
+            labels = new Label[columns];
 
-            string sql = "select rdb$field_name from rdb$relation_fields where rdb$relation_name ='" + tableName + "';";
-            FbCommand cmd = new FbCommand(sql, con);
-            FbDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            for (int i = 0; i < columns; i++)
             {
                 labels[i] = new Label();
                 labels[i].Location = new Point(20, y);
                 labels[i].Name = "text" + i.ToString();
                 labels[i].Size = new Size(150, 20);
                 labels[i].TabIndex = i;
-                labels[i].Text = reader.GetString(0).Trim();
+                try
+                {
+                    labels[i].Text = column[i].Name.ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("You have not selected any table", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Hide();
+                    this.Dispose();
+                    break;
+                }
                 labels[i].Visible = true;
                 this.Controls.Add(this.labels[i]);
                 y += 40;
@@ -95,6 +103,9 @@ namespace Proyecto1TBD2
                     catch (Exception)
                     {
                         MessageBox.Show("You have not selected any row", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Hide();
+                        this.Dispose();
+                        break;
                     }
                 }
                 text[i].Visible = true;
@@ -127,11 +138,11 @@ namespace Proyecto1TBD2
             for (int i = 0;i<columns; i++)
             {
                 if (update)
-                    updt += column[i].Name.ToString() + " = " + text[i].Text + ',';
+                    updt += column[i].Name.ToString() + " = '" + text[i].Text + "',";
                 else
                 {
                     if(!text[i].Text.Equals(""))
-                        commit += text[i].Text + ",";
+                       commit += "'"+text[i].Text + "',";
                     else
                         commit += "'',";
                 }
@@ -140,16 +151,17 @@ namespace Proyecto1TBD2
             {
                 if (update){
                     sql = updt.TrimEnd(',');
-                    newsql = "Update " + tableName + " set " + sql + " where " + column[0].Name.ToString() + " = " + row.Cells[0].Value.ToString() + ";";
+                    newsql = "UPDATE " + tableName + " SET " + sql + " WHERE " + column[0].Name.ToString() + " = '" + row.Cells[0].Value.ToString() + "';";
                 }
                 else {
                     sql = commit.TrimEnd(',');
-                    newsql = "insert into " + tableName + " values(" + sql + ");";
+                    newsql = "INSERT INTO " + tableName + " VALUES(" + sql + ");";
                 }
                 FbCommand cmd = new FbCommand(newsql, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Succes", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmd.Dispose();
+                ddl(newsql,false);
                 this.Hide();
             }
             catch (Exception)
@@ -159,7 +171,10 @@ namespace Proyecto1TBD2
                 MessageBox.Show("Be sure to fill in the necessary fields correctly","Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+        public void ddl(string _data,bool _createTable)//call dll
+        {
+            ShowDDL s = new ShowDDL();
+            s.sortData(_data, _createTable);
+        }
     }
-
-   
 }

@@ -25,7 +25,7 @@ namespace Proyecto1TBD2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string sql = "create table "+tablename.Text+ "(";
+            string sql = "CREATE TABLE " + tablename.Text+ "(";
             foreach(string field in fields)
             {
                 sql += field + ",";
@@ -38,6 +38,8 @@ namespace Proyecto1TBD2
                 FbCommand cmd = new FbCommand(newsql, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Table created successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmd.Dispose();
+                dll(newsql,true);
                 this.Hide();
             }
             catch (Exception ex)
@@ -47,6 +49,11 @@ namespace Proyecto1TBD2
             }
         }
 
+        public void dll(string _data,bool _createTable)//call dll
+        {
+            ShowDDL s = new ShowDDL();
+            s.sortData(_data, _createTable);
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();

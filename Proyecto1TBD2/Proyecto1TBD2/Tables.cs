@@ -15,10 +15,11 @@ namespace Proyecto1TBD2
     public partial class Tables : Form
     {
         FbConnection con = new FbConnection();
-        string row,column;
+        string row, column, Showddl;
         DataGridViewRow selectedRow;
         DataGridViewColumn selectedColumn;
         ArrayList al;
+
         public Tables()
         {
             InitializeComponent();
@@ -47,7 +48,8 @@ namespace Proyecto1TBD2
         {
             try
             {
-                string sql = "select distinct RDB$RELATION_NAME FROM RDB$RELATIONS WHERE RDB$VIEW_BLR IS NULL AND RDB$SYSTEM_FLAG =0;";
+                string sql = "SELECT DISTINCT RDB$RELATION_NAME FROM RDB$RELATIONS WHERE RDB$VIEW_BLR IS NULL AND RDB$SYSTEM_FLAG =0;";
+                Showddl = sql;
                 FbCommand cmd = new FbCommand(sql, con);
                 FbDataReader reader = cmd.ExecuteReader();
 
@@ -106,11 +108,11 @@ namespace Proyecto1TBD2
                 try
                 {
                     
-                    string sql = "drop table " + tabs.SelectedItem.ToString() + ";";
+                    string sql = "DROP TABLE " + tabs.SelectedItem.ToString() + ";";
                     FbCommand cmd = new FbCommand(sql, con);
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
-                    
+                    ddl(sql,false);
                 }catch(FirebirdSql.Data.FirebirdClient.FbException ex)
                 {
                     MessageBox.Show("Table is in use", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -120,7 +122,7 @@ namespace Proyecto1TBD2
 
         private void Add_Click(object sender, EventArgs e)//add data
         {
-            AddData a = new AddData(con, tabs.SelectedItem.ToString());
+            AddData a = new AddData(con, tabs.SelectedItem.ToString(), selectedRow, dataTable.Columns, false);
             a.Show();
         }
 
@@ -135,6 +137,8 @@ namespace Proyecto1TBD2
                     string sql = "delete from " + tabs.SelectedItem.ToString() + " where " + column + " = '" + row + "';";
                     FbCommand cmd = new FbCommand(sql, con);
                     cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    ddl(sql,false);
                     MessageBox.Show("delete field", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception)
@@ -142,8 +146,13 @@ namespace Proyecto1TBD2
                     MessageBox.Show("Field not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }  
+        }
 
+        public void ddl(string _data, bool createTable)//call dll
+        {
+            ShowDDL s = new ShowDDL();
+            s.sortData(_data, createTable);
+        }
         private void update_Click(object sender, EventArgs e)//Update Data
         {
             AddData a = new AddData(con, tabs.SelectedItem.ToString(), selectedRow, dataTable.Columns,true);
@@ -158,6 +167,7 @@ namespace Proyecto1TBD2
                 allTables += table + "\n";
             }
             MessageBox.Show(allTables,"Tables of System",MessageBoxButtons.OK);
+            ddl(Showddl,false);
         }
 
         private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e) //extrae dats de la fila y columna seleccionada
