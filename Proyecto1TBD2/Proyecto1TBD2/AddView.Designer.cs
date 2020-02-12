@@ -36,12 +36,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nameView = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.viewColumn = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.nameView = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.primaryKey = new System.Windows.Forms.TextBox();
+            this.foreignKey = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -131,6 +135,31 @@
             this.panel1.Size = new System.Drawing.Size(350, 257);
             this.panel1.TabIndex = 12;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(39, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(280, 17);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "__________________________________";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(52, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Name of view";
+            // 
+            // nameView
+            // 
+            this.nameView.Location = new System.Drawing.Point(205, 24);
+            this.nameView.Name = "nameView";
+            this.nameView.Size = new System.Drawing.Size(100, 22);
+            this.nameView.TabIndex = 16;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -156,36 +185,48 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Name of column";
             // 
-            // nameView
+            // primaryKey
             // 
-            this.nameView.Location = new System.Drawing.Point(205, 24);
-            this.nameView.Name = "nameView";
-            this.nameView.Size = new System.Drawing.Size(100, 22);
-            this.nameView.TabIndex = 16;
+            this.primaryKey.Location = new System.Drawing.Point(530, 57);
+            this.primaryKey.Name = "primaryKey";
+            this.primaryKey.Size = new System.Drawing.Size(100, 22);
+            this.primaryKey.TabIndex = 13;
             // 
-            // label4
+            // foreignKey
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Name of view";
+            this.foreignKey.Location = new System.Drawing.Point(689, 58);
+            this.foreignKey.Name = "foreignKey";
+            this.foreignKey.Size = new System.Drawing.Size(100, 22);
+            this.foreignKey.TabIndex = 14;
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(280, 17);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "__________________________________";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(575, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(165, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Primary and foreign keys";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(837, 56);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 522);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.foreignKey);
+            this.Controls.Add(this.primaryKey);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.show);
@@ -220,5 +261,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox nameView;
+        private System.Windows.Forms.TextBox primaryKey;
+        private System.Windows.Forms.TextBox foreignKey;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
     }
 }

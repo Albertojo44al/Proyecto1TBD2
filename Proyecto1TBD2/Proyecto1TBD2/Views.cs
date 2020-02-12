@@ -110,5 +110,15 @@ namespace Proyecto1TBD2
             ShowDDL s = new ShowDDL();
             s.sortData(_data, createTable);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

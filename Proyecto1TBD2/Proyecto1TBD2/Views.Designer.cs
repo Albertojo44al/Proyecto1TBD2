@@ -61,11 +61,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 73);
+            this.label1.Location = new System.Drawing.Point(32, 73);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.Size = new System.Drawing.Size(37, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Table";
+            this.label1.Text = "View";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataTable
             // 
@@ -76,6 +77,7 @@
             this.dataTable.RowTemplate.Height = 24;
             this.dataTable.Size = new System.Drawing.Size(1026, 371);
             this.dataTable.TabIndex = 5;
+            this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTable_CellContentClick);
             // 
             // Add
             // 

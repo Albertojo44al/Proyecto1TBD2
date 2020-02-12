@@ -160,10 +160,10 @@ namespace Proyecto1TBD2
             a.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ForeignKey f = new ForeignKey(con, tabs.SelectedItem.ToString());
-            f.Show();
+            UpdateTable u = new UpdateTable(con, tabs.SelectedItem.ToString());
+            u.Show();
         }
 
         private void showTables_Click(object sender, EventArgs e)

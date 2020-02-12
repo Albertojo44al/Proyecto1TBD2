@@ -56,7 +56,8 @@ namespace Proyecto1TBD2
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Indexes i = new Indexes(con);
+            i.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

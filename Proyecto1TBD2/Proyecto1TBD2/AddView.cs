@@ -19,7 +19,8 @@ namespace Proyecto1TBD2
         FbConnection con;
         ArrayList al;
         int indexColumn;
-        string vista="", tabla="";
+        string vista="", tabla="", nameFirsTable="", nameSecondTable,nameFirstKey="",nameForeignKey="";
+
         public AddView(FbConnection _con)
         {
             InitializeComponent();
@@ -100,7 +101,16 @@ namespace Proyecto1TBD2
 
             try
             {
-                string sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + tabs.SelectedItem.ToString() + ";";
+                string sql = "";
+                if (nameFirstKey.Equals("") && nameForeignKey.Equals(""))
+                {
+                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + tabs.SelectedItem.ToString() + ";";
+                }
+                else
+                {
+                    char a = (char)34;
+                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + nameFirsTable + " INNER JOIN " + nameSecondTable + " ON " +a+ nameFirstKey +a +" = "+a + nameForeignKey+a + ";";
+                }
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -122,6 +132,13 @@ namespace Proyecto1TBD2
             tabla += nameColumn.Text + ",";
             viewColumn.Clear();
             nameColumn.Clear();
+            if(nameFirsTable.Equals(""))
+                 nameFirsTable = tabs.SelectedItem.ToString();
+            else if (!nameFirsTable.Equals(tabs.SelectedItem.ToString()))
+            {
+                nameSecondTable = tabs.SelectedItem.ToString();
+            }
+
         }
 
         private void dataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -132,6 +149,12 @@ namespace Proyecto1TBD2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            nameFirstKey = primaryKey.Text;
+            nameForeignKey = foreignKey.Text;
         }
 
         public void ddl(string _data, bool createTable)//call dll

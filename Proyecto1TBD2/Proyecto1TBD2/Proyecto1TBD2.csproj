@@ -75,6 +75,12 @@
     <Compile Include="ForeignKey.Designer.cs">
       <DependentUpon>ForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Indexes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Indexes.Designer.cs">
+      <DependentUpon>Indexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,12 @@
     </Compile>
     <Compile Include="NewTable.Designer.cs">
       <DependentUpon>NewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrimaryKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrimaryKey.Designer.cs">
+      <DependentUpon>PrimaryKey.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +125,12 @@
     <Compile Include="AddView.Designer.cs">
       <DependentUpon>AddView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateTable.Designer.cs">
+      <DependentUpon>UpdateTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,11 +149,17 @@
     <EmbeddedResource Include="ForeignKey.resx">
       <DependentUpon>ForeignKey.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Indexes.resx">
+      <DependentUpon>Indexes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewTable.resx">
       <DependentUpon>NewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrimaryKey.resx">
+      <DependentUpon>PrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -157,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddView.resx">
       <DependentUpon>AddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateTable.resx">
+      <DependentUpon>UpdateTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views.resx">
       <DependentUpon>Views.cs</DependentUpon>

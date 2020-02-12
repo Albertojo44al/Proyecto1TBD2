@@ -64,11 +64,18 @@ namespace Proyecto1TBD2
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 MessageBox.Show("Succes!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                ddl(sql, false);
             }
             catch (Exception)
             {
                 MessageBox.Show("Be sure to the foreign key name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public void ddl(string _data, bool createTable)//call dll
+        {
+            ShowDDL s = new ShowDDL();
+            s.sortData(_data, createTable);
         }
 
         private void tabs_SelectedIndexChanged(object sender, EventArgs e)

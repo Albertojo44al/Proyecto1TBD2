@@ -135,6 +135,7 @@
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.foreign);
             this.Name = "ForeignKey";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForeignKey";
             this.Load += new System.EventHandler(this.ForeignKey_Load);
             this.ResumeLayout(false);

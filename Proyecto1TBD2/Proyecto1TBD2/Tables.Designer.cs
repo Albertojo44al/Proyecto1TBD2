@@ -40,7 +40,7 @@
             this.Add = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.update = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.delete,
-            this.showTables});
+            this.showTables,
+            this.toolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1050, 28);
@@ -171,22 +172,19 @@
             this.update.UseVisualStyleBackColor = false;
             this.update.Click += new System.EventHandler(this.update_Click);
             // 
-            // button2
+            // toolStripMenuItem2
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(446, 56);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 23);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(130, 24);
+            this.toolStripMenuItem2.Text = "Update table";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.update);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Add);
@@ -221,6 +219,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button update;
         public System.Windows.Forms.DataGridView dataTable;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
