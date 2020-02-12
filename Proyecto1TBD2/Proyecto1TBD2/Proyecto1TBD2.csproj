@@ -69,6 +69,12 @@
     <Compile Include="ConnectDataBase.Designer.cs">
       <DependentUpon>ConnectDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="ForeignKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForeignKey.Designer.cs">
+      <DependentUpon>ForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,11 +107,17 @@
     <Compile Include="Tools.Designer.cs">
       <DependentUpon>Tools.cs</DependentUpon>
     </Compile>
-    <Compile Include="View.cs">
+    <Compile Include="AddView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View.Designer.cs">
-      <DependentUpon>View.cs</DependentUpon>
+    <Compile Include="AddView.Designer.cs">
+      <DependentUpon>AddView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views.Designer.cs">
+      <DependentUpon>Views.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddData.resx">
       <DependentUpon>AddData.cs</DependentUpon>
@@ -115,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateDataBase.resx">
       <DependentUpon>CreateDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForeignKey.resx">
+      <DependentUpon>ForeignKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -140,8 +155,11 @@
     <EmbeddedResource Include="Tools.resx">
       <DependentUpon>Tools.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View.resx">
-      <DependentUpon>View.cs</DependentUpon>
+    <EmbeddedResource Include="AddView.resx">
+      <DependentUpon>AddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views.resx">
+      <DependentUpon>Views.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

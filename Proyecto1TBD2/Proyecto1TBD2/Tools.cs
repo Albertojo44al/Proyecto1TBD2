@@ -61,8 +61,8 @@ namespace Proyecto1TBD2
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (con.State == System.Data.ConnectionState.Open)
-                MessageBox.Show("Connected!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Views v = new Views(con);
+            v.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

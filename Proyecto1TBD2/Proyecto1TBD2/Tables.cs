@@ -61,6 +61,7 @@ namespace Proyecto1TBD2
 
                 tabs.DataSource = al;
                 tabs.SelectedIndexChanged += tabs_SelectedIndexChanged;
+                cmd.Dispose();
             }catch(Exception)
             {
                 MessageBox.Show("You are not connected to a database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -157,6 +158,12 @@ namespace Proyecto1TBD2
         {
             AddData a = new AddData(con, tabs.SelectedItem.ToString(), selectedRow, dataTable.Columns,true);
             a.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ForeignKey f = new ForeignKey(con, tabs.SelectedItem.ToString());
+            f.Show();
         }
 
         private void showTables_Click(object sender, EventArgs e)

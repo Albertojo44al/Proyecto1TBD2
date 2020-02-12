@@ -40,6 +40,7 @@
             this.Add = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.update = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
@@ -170,11 +171,22 @@
             this.update.UseVisualStyleBackColor = false;
             this.update.Click += new System.EventHandler(this.update_Click);
             // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(446, 56);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 23);
+            this.button2.TabIndex = 8;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.update);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Add);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button update;
         public System.Windows.Forms.DataGridView dataTable;
+        private System.Windows.Forms.Button button2;
     }
 }
