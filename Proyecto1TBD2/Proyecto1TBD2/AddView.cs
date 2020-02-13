@@ -92,26 +92,14 @@ namespace Proyecto1TBD2
         {
             indexColumn = e.ColumnIndex;
             DataGridViewColumn selectedColumn = dataTable.Columns[indexColumn];
-            nameColumn.Text = selectedColumn.Name.ToString();
+            column.Text = selectedColumn.Name.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string newVista = vista.TrimEnd(',');
-            string newTabla = tabla.TrimEnd(',');
-
             try
             {
-                string sql = "";
-                if (nameFirstKey.Equals("") && nameForeignKey.Equals(""))
-                {
-                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + tabs.SelectedItem.ToString() + ";";
-                }
-                else
-                {
-                    char a = (char)34;
-                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + nameFirsTable + " A INNER JOIN " + nameSecondTable + " B ON A." +a+ nameFirstKey +a +" = B."+a + nameForeignKey+a + ";";
-                }
+                string sql = "CREATE VIEW " + nameView.Text+ code.Text;
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -125,29 +113,7 @@ namespace Proyecto1TBD2
             }
         }
 
-        private void add_Click(object sender, EventArgs e)
-        {
-
-            char  a = (char)34;
-            vista += a + viewColumn.Text +a + ",";
-
-            
-            if (nameFirsTable.Equals("")) {
-                nameFirsTable = tabs.SelectedItem.ToString();
-            }
-            else if (!nameFirsTable.Equals(tabs.SelectedItem.ToString()))
-            {
-                numberTable++;
-                nameSecondTable = tabs.SelectedItem.ToString();
-            }
-
-            if (numberTable == 1)
-                tabla += "A." + nameColumn.Text + ",";
-            else
-                tabla += "B." + nameColumn.Text + ",";
-            viewColumn.Clear();
-            nameColumn.Clear();
-        }
+     
 
         private void dataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -157,14 +123,6 @@ namespace Proyecto1TBD2
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            nameFirstKey = primaryKey.Text;
-            nameForeignKey = foreignKey.Text;
-            primaryKey.Clear();
-            foreignKey.Clear();
         }
 
         public void ddl(string _data, bool createTable)//call dll

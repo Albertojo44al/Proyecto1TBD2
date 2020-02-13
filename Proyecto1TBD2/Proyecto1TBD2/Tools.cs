@@ -73,7 +73,8 @@ namespace Proyecto1TBD2
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Triggers t = new Triggers(con);
+            t.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)

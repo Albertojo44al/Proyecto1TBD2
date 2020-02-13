@@ -88,5 +88,45 @@ namespace Proyecto1TBD2
                 }
             }
         }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            CreateUser c = new CreateUser(con);
+            c.Show();
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string users = "";
+            string sql = "SELECT DISTINCT RDB$USER FROM RDB$USER_PRIVILEGES;";
+            FbCommand cmd = new FbCommand(sql, con);
+            
+            
+            try
+            {
+                FbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    users += reader.GetString(0).Trim()+ " \n";
+                }
+                MessageBox.Show(users, "USERS", MessageBoxButtons.OK);
+                ddl(sql, false);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Yo are not connected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        public void ddl(string _data, bool createTable)//call dll
+        {
+            ShowDDL s = new ShowDDL();
+            s.sortData(_data, createTable);
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

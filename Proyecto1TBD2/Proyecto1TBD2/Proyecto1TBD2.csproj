@@ -75,6 +75,12 @@
     <Compile Include="ConnectDataBase.Designer.cs">
       <DependentUpon>ConnectDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteIPF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     <Compile Include="AddView.Designer.cs">
       <DependentUpon>AddView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Triggers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Triggers.Designer.cs">
+      <DependentUpon>Triggers.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateDataBase.resx">
       <DependentUpon>CreateDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteIPF.resx">
       <DependentUpon>DeleteIPF.cs</DependentUpon>
@@ -199,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddView.resx">
       <DependentUpon>AddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Triggers.resx">
+      <DependentUpon>Triggers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateTable.resx">
       <DependentUpon>UpdateTable.cs</DependentUpon>
