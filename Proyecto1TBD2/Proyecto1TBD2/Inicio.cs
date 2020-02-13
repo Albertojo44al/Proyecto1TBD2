@@ -62,7 +62,7 @@ namespace Proyecto1TBD2
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Tools t = new Tools(con);
+            Tools t = new Tools(con,"");
             t.Show();
         }
 

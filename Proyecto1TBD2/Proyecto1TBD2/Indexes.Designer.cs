@@ -206,7 +206,7 @@
             // indexS
             // 
             this.indexS.AutoSize = true;
-            this.indexS.Location = new System.Drawing.Point(170, 461);
+            this.indexS.Location = new System.Drawing.Point(120, 461);
             this.indexS.Name = "indexS";
             this.indexS.Size = new System.Drawing.Size(38, 17);
             this.indexS.TabIndex = 30;
@@ -215,7 +215,7 @@
             // primaryS
             // 
             this.primaryS.AutoSize = true;
-            this.primaryS.Location = new System.Drawing.Point(495, 461);
+            this.primaryS.Location = new System.Drawing.Point(446, 461);
             this.primaryS.Name = "primaryS";
             this.primaryS.Size = new System.Drawing.Size(38, 17);
             this.primaryS.TabIndex = 31;
@@ -224,7 +224,7 @@
             // foreignS
             // 
             this.foreignS.AutoSize = true;
-            this.foreignS.Location = new System.Drawing.Point(852, 461);
+            this.foreignS.Location = new System.Drawing.Point(787, 461);
             this.foreignS.Name = "foreignS";
             this.foreignS.Size = new System.Drawing.Size(38, 17);
             this.foreignS.TabIndex = 32;

@@ -51,7 +51,7 @@ namespace Proyecto1TBD2
         {
 
            
-            Tools t = new Tools(con);
+            Tools t = new Tools(con,alias.Text);
             Inicio i = new Inicio(fbc, con);
             i.Show();
             t.Show();

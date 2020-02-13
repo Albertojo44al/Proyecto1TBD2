@@ -16,6 +16,7 @@ namespace Proyecto1TBD2
     {
         FbConnection con;
         ArrayList al, nal;
+        bool modify;
         public Triggers(FbConnection _con)
         {
             InitializeComponent();
@@ -157,11 +158,16 @@ namespace Proyecto1TBD2
                 //FOR NEW_TABLE
                 //BEFORE INSERT OR UPDATE AS
                 //BEGIN
-                //NEW.NOMBRE = UPPER(NEW.APELLIDO);
+                //NEW.NOMBRE = UPPER(NEW.NOMBRE);
                 //END;
-
-
-                string sql = "CREATE TRIGGER " + nameTrigger.Text + " FOR " + tabs.SelectedItem.ToString() + type + onEvent + " AS " + code.Text;
+                string sql = "";
+                if (modify) {
+                   sql = "ALTER TRIGGER " + showTriggers.SelectedItem.ToString() + " ACTIVE " + type + onEvent + " AS " + code.Text;
+                }
+                else
+                {
+                    sql = "CREATE TRIGGER " + nameTrigger.Text + " FOR " + tabs.SelectedItem.ToString() + type + onEvent + " AS " + code.Text;
+                }
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -172,6 +178,24 @@ namespace Proyecto1TBD2
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CrateTrigger(bool update)
+        {
+
+        }
+
+        private void updatePrimary_Click(object sender, EventArgs e)
+        {
+            
+            modify = true;
+            MessageBox.Show("Press compile", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            modify = false;
+            MessageBox.Show("Press compile", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void ddl(string _data, bool createTable)//call dll

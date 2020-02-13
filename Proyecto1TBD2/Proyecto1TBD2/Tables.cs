@@ -179,11 +179,18 @@ namespace Proyecto1TBD2
 
         private void dataTable_CellClick(object sender, DataGridViewCellEventArgs e) //extrae dats de la fila y columna seleccionada
         {
-            int indexr = e.RowIndex;
-            selectedRow = dataTable.Rows[indexr];
-            selectedColumn = dataTable.Columns[0];
-            row = selectedRow.Cells[0].Value.ToString();
-            column = selectedColumn.Name.ToString();
+            try
+            {
+                int indexr = e.RowIndex;
+                selectedRow = dataTable.Rows[indexr];
+                selectedColumn = dataTable.Columns[0];
+                row = selectedRow.Cells[0].Value.ToString();
+                column = selectedColumn.Name.ToString();
+            }
+            catch (Exception)
+            {
+
+            }
             
         }
     }

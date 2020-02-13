@@ -14,20 +14,21 @@ namespace Proyecto1TBD2
     public partial class Tools :   Form
     {
 
-
+        
         FbConnection con = new FbConnection();
         Conection obj = new Conection();
-        string path;
+        string path,alias ="";
         public Tools()
         {
             InitializeComponent();
             this.Location = new Point(262, 173);  
         }
-        public Tools(FbConnection _con)
+        public Tools(FbConnection _con, string _alias)
         {
             InitializeComponent();
             this.Location = new Point(262, 173);
             con = _con;
+            alias = _alias;
            
 
         }
@@ -85,6 +86,26 @@ namespace Proyecto1TBD2
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Tools_Load(object sender, EventArgs e)
+        {
+            if (alias.Equals(""))
+            {
+                try
+                {
+                    dataBase.Text = con.Database.ToString();
+                }
+                catch (Exception)
+                {
+
+                }
+                
+            }
+            else
+            {
+                dataBase.Text = alias+".FDB";
+            }
         }
     }
 }

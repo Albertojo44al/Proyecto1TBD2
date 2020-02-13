@@ -48,6 +48,7 @@
             this.compile = new System.Windows.Forms.Button();
             this.showTriggers = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.add = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -196,13 +197,14 @@
             this.updatePrimary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updatePrimary.Image = ((System.Drawing.Image)(resources.GetObject("updatePrimary.Image")));
             this.updatePrimary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.updatePrimary.Location = new System.Drawing.Point(629, 198);
+            this.updatePrimary.Location = new System.Drawing.Point(592, 199);
             this.updatePrimary.Name = "updatePrimary";
-            this.updatePrimary.Size = new System.Drawing.Size(121, 24);
+            this.updatePrimary.Size = new System.Drawing.Size(140, 24);
             this.updatePrimary.TabIndex = 37;
-            this.updatePrimary.Text = "Update";
+            this.updatePrimary.Text = "Update trigger";
             this.updatePrimary.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.updatePrimary.UseVisualStyleBackColor = false;
+            this.updatePrimary.Click += new System.EventHandler(this.updatePrimary_Click);
             // 
             // button1
             // 
@@ -211,11 +213,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(473, 199);
+            this.button1.Location = new System.Drawing.Point(434, 199);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 24);
+            this.button1.Size = new System.Drawing.Size(133, 24);
             this.button1.TabIndex = 36;
-            this.button1.Text = "Delete field";
+            this.button1.Text = "Delete trigger";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -225,11 +227,9 @@
             this.compile.BackColor = System.Drawing.Color.Azure;
             this.compile.FlatAppearance.BorderSize = 0;
             this.compile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.compile.Image = ((System.Drawing.Image)(resources.GetObject("compile.Image")));
-            this.compile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.compile.Location = new System.Drawing.Point(315, 198);
+            this.compile.Location = new System.Drawing.Point(836, 199);
             this.compile.Name = "compile";
-            this.compile.Size = new System.Drawing.Size(121, 24);
+            this.compile.Size = new System.Drawing.Size(76, 24);
             this.compile.TabIndex = 35;
             this.compile.Text = "Compile";
             this.compile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -254,11 +254,28 @@
             this.label5.TabIndex = 38;
             this.label5.Text = "Triggers";
             // 
+            // add
+            // 
+            this.add.BackColor = System.Drawing.Color.Azure;
+            this.add.FlatAppearance.BorderSize = 0;
+            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add.Image = ((System.Drawing.Image)(resources.GetObject("add.Image")));
+            this.add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.add.Location = new System.Drawing.Point(287, 199);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(126, 24);
+            this.add.TabIndex = 40;
+            this.add.Text = "Add trigger";
+            this.add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.add.UseVisualStyleBackColor = false;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // Triggers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 612);
+            this.Controls.Add(this.add);
             this.Controls.Add(this.showTriggers);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.updatePrimary);
@@ -305,5 +322,6 @@
         private System.Windows.Forms.Button compile;
         private System.Windows.Forms.ComboBox showTriggers;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button add;
     }
 }

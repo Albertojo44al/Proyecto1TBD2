@@ -76,7 +76,7 @@ namespace Proyecto1TBD2
 
         private void Add_Click(object sender, EventArgs e)
         {
-            AddView a = new AddView(con);
+            AddView a = new AddView(con,"",false);
             a.Show();
         }
 
@@ -119,6 +119,19 @@ namespace Proyecto1TBD2
         private void dataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddView a = new AddView(con, tabs.SelectedItem.ToString(), true);
+                a.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

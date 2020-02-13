@@ -109,6 +109,7 @@
             this.update.Text = "Update";
             this.update.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // button1
             // 

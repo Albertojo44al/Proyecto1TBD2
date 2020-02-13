@@ -38,6 +38,7 @@
             this.code = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.column = new System.Windows.Forms.TextBox();
+            this.nameViewUpdate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,11 +134,20 @@
             this.column.Size = new System.Drawing.Size(100, 22);
             this.column.TabIndex = 19;
             // 
+            // nameViewUpdate
+            // 
+            this.nameViewUpdate.AutoSize = true;
+            this.nameViewUpdate.Location = new System.Drawing.Point(181, 29);
+            this.nameViewUpdate.Name = "nameViewUpdate";
+            this.nameViewUpdate.Size = new System.Drawing.Size(0, 17);
+            this.nameViewUpdate.TabIndex = 21;
+            // 
             // AddView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 522);
+            this.Controls.Add(this.nameViewUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.column);
             this.Controls.Add(this.code);
@@ -170,5 +180,6 @@
         private System.Windows.Forms.RichTextBox code;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox column;
+        private System.Windows.Forms.Label nameViewUpdate;
     }
 }

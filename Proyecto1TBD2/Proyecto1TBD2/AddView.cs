@@ -19,19 +19,25 @@ namespace Proyecto1TBD2
         FbConnection con;
         ArrayList al;
         int indexColumn;
-        string vista="", tabla="", nameFirsTable="", nameSecondTable,nameFirstKey="",nameForeignKey="";
-        int numberTable=1;
-
-        public AddView(FbConnection _con)
+        bool update;
+        string viewName;
+        public AddView(FbConnection _con, string _viewName,bool _update)
         {
             InitializeComponent();
             this.Location = new Point(470, 173);
             con = _con;
+            update = _update;
+            viewName = _viewName;
         }
 
         private void View_Load(object sender, EventArgs e)
         {
             Tabs();
+            if (update)
+            {
+                nameView.Hide();
+                nameViewUpdate.Text = viewName;
+            }
         }
 
 
@@ -99,13 +105,29 @@ namespace Proyecto1TBD2
         {
             try
             {
-                string sql = "CREATE VIEW " + nameView.Text+ code.Text;
-                FbCommand cmd = new FbCommand(sql, con);
+                FbCommand cmd;
+                string sql = "",newsql="";
+                if (update)
+                {
+                    sql = "DROP VIEW " + viewName + " ;";
+                    cmd = new FbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    newsql = sql;
+                    sql = "CREATE VIEW " + viewName + code.Text;
+                    newsql += "\n" + sql;
+                }
+                else
+                {
+                  sql  = "CREATE VIEW " + nameView.Text + code.Text;
+                  newsql = sql;
+                }                
+                cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                ddl(sql, true);
                 MessageBox.Show("View created!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
+                ddl(newsql, true);
             }
             catch (Exception)
             {
