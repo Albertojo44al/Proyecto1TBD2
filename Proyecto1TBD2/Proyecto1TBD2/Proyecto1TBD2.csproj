@@ -56,6 +56,12 @@
     <Compile Include="AddData.Designer.cs">
       <DependentUpon>AddData.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIndex.Designer.cs">
+      <DependentUpon>AddIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Conection.cs" />
     <Compile Include="CreateDataBase.cs">
       <SubType>Form</SubType>
@@ -68,6 +74,12 @@
     </Compile>
     <Compile Include="ConnectDataBase.Designer.cs">
       <DependentUpon>ConnectDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteIPF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteIPF.Designer.cs">
+      <DependentUpon>DeleteIPF.cs</DependentUpon>
     </Compile>
     <Compile Include="ForeignKey.cs">
       <SubType>Form</SubType>
@@ -140,11 +152,17 @@
     <EmbeddedResource Include="AddData.resx">
       <DependentUpon>AddData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddIndex.resx">
+      <DependentUpon>AddIndex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectDataBase.resx">
       <DependentUpon>ConnectDataBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateDataBase.resx">
       <DependentUpon>CreateDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteIPF.resx">
+      <DependentUpon>DeleteIPF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForeignKey.resx">
       <DependentUpon>ForeignKey.cs</DependentUpon>

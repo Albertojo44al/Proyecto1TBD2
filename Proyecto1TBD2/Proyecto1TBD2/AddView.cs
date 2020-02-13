@@ -20,6 +20,7 @@ namespace Proyecto1TBD2
         ArrayList al;
         int indexColumn;
         string vista="", tabla="", nameFirsTable="", nameSecondTable,nameFirstKey="",nameForeignKey="";
+        int numberTable=1;
 
         public AddView(FbConnection _con)
         {
@@ -109,7 +110,7 @@ namespace Proyecto1TBD2
                 else
                 {
                     char a = (char)34;
-                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + nameFirsTable + " INNER JOIN " + nameSecondTable + " ON " +a+ nameFirstKey +a +" = "+a + nameForeignKey+a + ";";
+                    sql = "CREATE VIEW " + nameView.Text + "(" + newVista + ") AS SELECT " + newTabla + " FROM " + nameFirsTable + " A INNER JOIN " + nameSecondTable + " B ON A." +a+ nameFirstKey +a +" = B."+a + nameForeignKey+a + ";";
                 }
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
@@ -126,19 +127,26 @@ namespace Proyecto1TBD2
 
         private void add_Click(object sender, EventArgs e)
         {
+
             char  a = (char)34;
             vista += a + viewColumn.Text +a + ",";
 
-            tabla += nameColumn.Text + ",";
-            viewColumn.Clear();
-            nameColumn.Clear();
-            if(nameFirsTable.Equals(""))
-                 nameFirsTable = tabs.SelectedItem.ToString();
+            
+            if (nameFirsTable.Equals("")) {
+                nameFirsTable = tabs.SelectedItem.ToString();
+            }
             else if (!nameFirsTable.Equals(tabs.SelectedItem.ToString()))
             {
+                numberTable++;
                 nameSecondTable = tabs.SelectedItem.ToString();
             }
 
+            if (numberTable == 1)
+                tabla += "A." + nameColumn.Text + ",";
+            else
+                tabla += "B." + nameColumn.Text + ",";
+            viewColumn.Clear();
+            nameColumn.Clear();
         }
 
         private void dataTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,6 +163,8 @@ namespace Proyecto1TBD2
         {
             nameFirstKey = primaryKey.Text;
             nameForeignKey = foreignKey.Text;
+            primaryKey.Clear();
+            foreignKey.Clear();
         }
 
         public void ddl(string _data, bool createTable)//call dll

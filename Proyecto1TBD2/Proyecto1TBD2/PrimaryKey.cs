@@ -14,12 +14,15 @@ namespace Proyecto1TBD2
     public partial class PrimaryKey : Form
     {
         FbConnection con;
-        string table;
-        public PrimaryKey(FbConnection _con, string _table)
+        string table,actualPrimary;
+        bool update;
+        public PrimaryKey(FbConnection _con, string _table,string _actualPrimary, bool _update)
         {
             InitializeComponent();
             con = _con;
             table = _table;
+            actualPrimary = _actualPrimary;
+            update = _update;
         }
 
         public void Data(DataGridView dgv)//show data in dataGridView
@@ -63,7 +66,15 @@ namespace Proyecto1TBD2
         {
             try
             {
-                string sql = "ALTER TABLE "+table+" ADD PRIMARY KEY ("+newPrimary.Text+");";
+                string sql = "";
+                if (update)
+                {
+                    sql = "ALTER TABLE " + table + " DROP CONSTRAINT " + actualPrimary + ", ADD PRIMARY KEY (" + newPrimary.Text + "); ";
+                }
+                else
+                {
+                    sql = "ALTER TABLE " + table + " ADD PRIMARY KEY (" + newPrimary.Text + ");";
+                }
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();           

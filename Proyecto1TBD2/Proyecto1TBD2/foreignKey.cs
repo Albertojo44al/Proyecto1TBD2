@@ -16,13 +16,16 @@ namespace Proyecto1TBD2
     {
         FbConnection con;
         ArrayList al;
-        string table;
-        public ForeignKey(FbConnection _con,string _table)
+        string table,actualForeign;
+        bool update;
+        public ForeignKey(FbConnection _con,string _table,string _actualForeign, bool _update)
         {
             InitializeComponent(); ;
             con = _con;
             actualTable.Text = "Table: "+_table;
             table = _table;
+            actualForeign = _actualForeign;
+            update = _update;
         }
 
         private void ForeignKey_Load(object sender, EventArgs e)
@@ -59,7 +62,15 @@ namespace Proyecto1TBD2
         {
             try
             {
-                string sql = "ALTER TABLE " + table + " ADD FOREIGN KEY (" + foreign.Text.Trim() + ") REFERENCES " + tabs.SelectedItem.ToString() + "(" + key.Text.Trim() + ");";
+                string sql = "";
+                if (update)
+                {
+                    sql = "ALTER TABLE " + table + " DROP CONSTRAINT " + actualForeign + ", ADD FOREIGN KEY (" + foreign.Text.Trim() + ") REFERENCES " + tabs.SelectedItem.ToString() + "(" + key.Text.Trim() + ");";
+                }
+                else {
+                    sql = "ALTER TABLE " + table + " ADD FOREIGN KEY (" + foreign.Text.Trim() + ") REFERENCES " + tabs.SelectedItem.ToString() + "(" + key.Text.Trim() + ");";
+                }
+                
                 FbCommand cmd = new FbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -85,12 +96,20 @@ namespace Proyecto1TBD2
 
         private void select_Click(object sender, EventArgs e)
         {
-            string sql = "select sg.rdb$field_name as field_name from rdb$indices ix left join rdb$index_segments sg on ix.rdb$index_name = sg.rdb$index_name left join rdb$relation_constraints rc on rc.rdb$index_name = ix.rdb$index_name where rc.rdb$constraint_type = 'PRIMARY KEY' AND RC.RDB$RELATION_NAME = '"+ tabs.SelectedItem.ToString()+"'; ";
-            FbCommand cmd = new FbCommand(sql, con);
-            FbDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            foreign.Text = reader.GetString(0);
-            key.Text = reader.GetString(0);
+            try
+            {
+                string sql = "select sg.rdb$field_name as field_name from rdb$indices ix left join rdb$index_segments sg on ix.rdb$index_name = sg.rdb$index_name left join rdb$relation_constraints rc on rc.rdb$index_name = ix.rdb$index_name where rc.rdb$constraint_type = 'PRIMARY KEY' AND RC.RDB$RELATION_NAME = '" + tabs.SelectedItem.ToString() + "'; ";
+                FbCommand cmd = new FbCommand(sql, con);
+                FbDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                foreign.Text = reader.GetString(0);
+                key.Text = reader.GetString(0);
+                cmd.Dispose();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("That table don't have a primary key", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
